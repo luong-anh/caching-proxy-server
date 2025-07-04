@@ -28,7 +28,8 @@ Diagnostics:
       "modernize-use-trailing-return-type",
       "cert-err58-cpp",
       "cppcoreguidelines-owning-memory",
-      "cppcoreguidelines-avoid-non-const-global-variables"
+      "cppcoreguidelines-avoid-non-const-global-variables",
+      "cert-env33-c"
     ]
     CheckOptions:
       readability-identifier-naming.VariableCase: camelCase

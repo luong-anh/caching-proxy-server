@@ -1,6 +1,11 @@
 #include <iostream>
+#include <thread>
 #include <gtest/gtest.h>
 
-TEST(TestSuite, Add1And1) {
-    EXPECT_EQ(1+1, 2);
+TEST(OriginServer, StartsUp) {
+    std::system("./mock_server &");
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+
+    // Tear down
+    std::system("pkill -f ./mock_server");
 }

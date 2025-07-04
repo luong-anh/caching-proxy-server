@@ -11,6 +11,18 @@ add_executable(caching-proxy-server
 )
 target_include_directories(caching-proxy-server PRIVATE src)
 
+add_custom_target(build_origin_server ALL
+    COMMAND ${CMAKE_COMMAND} -E chdir ${CMAKE_SOURCE_DIR}/tests/http-server make
+    COMMENT "Building HTTP origin server with Makefile"
+)
+
+add_custom_command(
+  TARGET build_origin_server POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy
+          ${CMAKE_SOURCE_DIR}/tests/http-server/server
+          ${CMAKE_BINARY_DIR}/mock_server
+)
+
 # Add GoogleTest submodule
 add_subdirectory(third_party/googletest)
 
