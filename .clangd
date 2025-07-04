@@ -1,0 +1,43 @@
+CompileFlags:
+  Add: [
+    "-std=c++17",
+    "-Wall",
+    "-Wextra",
+    "-Wshadow",
+    "-Wconversion",
+    "-Wpedantic",
+    "-Werror"
+  ]
+  Remove: ["-W*"]
+  Compiler: clang++
+
+Diagnostics:
+  ClangTidy:
+    Add: [
+      "performance-*",
+      "bugprone-*",
+      "readability-*",
+      "modernize-*",
+      "cppcoreguidelines-*",
+      "cert-*",
+      "clang-analyzer-*",
+      "hicpp-*",
+      "misc-*"
+    ]
+    Remove: [
+      "modernize-use-trailing-return-type",
+      "cert-err58-cpp",
+      "cppcoreguidelines-owning-memory",
+      "cppcoreguidelines-avoid-non-const-global-variables"
+    ]
+    CheckOptions:
+      readability-identifier-naming.VariableCase: camelCase
+      readability-identifier-naming.FunctionCase: camelBack
+    HeaderFilterRegex: '^(src|test)/'
+
+Index:
+  Background: Build
+  IgnoreDirs:
+    - third_party/googletest
+    - third_party/googletest/googletest
+    - third_party/googletest/googlemock
