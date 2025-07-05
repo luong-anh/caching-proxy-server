@@ -1,6 +1,7 @@
+#include <gtest/gtest.h>
+
 #include <iostream>
 #include <thread>
-#include <gtest/gtest.h>
 
 TEST(OriginServer, StartsUp) {
     std::system("./mock_server &");
